@@ -6,12 +6,12 @@ const loadInput = () =>
     .split('\n')
     .map((n) => parseInt(n, 10));
 
-const isSum2020 = (num1, num2) => num1 + num2 === 2020;
+const isSum2020 = (numbers) => numbers.reduce((a, b) => a + b, 0) === 2020;
 
-const findEntriesThatSumTo2020 = (numbers) => {
+const find2EntriesThatSumTo2020 = (numbers) => {
   for (let i = 0; i < numbers.length - 1; i++) {
     for (let j = i + 1; j < numbers.length; j++) {
-      if (isSum2020(numbers[i], numbers[j])) {
+      if (isSum2020([numbers[i], numbers[j]])) {
         return [numbers[i], numbers[j]];
       }
     }
@@ -19,10 +19,28 @@ const findEntriesThatSumTo2020 = (numbers) => {
   return null;
 };
 
+const find3EntriesThatSumTo2020 = (numbers) => {
+  for (let i = 0; i < numbers.length - 2; i++) {
+    for (let j = i + 1; j < numbers.length - 1; j++) {
+      for (let k = j + 1; k < numbers.length; k++) {
+        if (isSum2020([numbers[i], numbers[j], numbers[k]])) {
+          return [numbers[i], numbers[j], numbers[k]];
+        }
+      }
+    }
+  }
+  return null;
+};
+
+const multiplyEntries = (numbers) => numbers.reduce((a, b) => a * b, 1);
+
 const start = () => {
   const input = loadInput();
-  const entries = findEntriesThatSumTo2020(input);
-  console.log(entries[0] * entries[1]);
+  const entries2 = find2EntriesThatSumTo2020(input);
+  console.log(multiplyEntries(entries2));
+
+  const entries3 = find3EntriesThatSumTo2020(input);
+  console.log(multiplyEntries(entries3));
 };
 
 start();
