@@ -1,10 +1,4 @@
-const fs = require('fs');
-
-const loadInput = () =>
-  fs
-    .readFileSync('./day1/input', { encoding: 'utf8' })
-    .split('\n')
-    .map((n) => parseInt(n, 10));
+const { loadInput } = require('../helpers');
 
 const isSum2020 = (numbers) => numbers.reduce((a, b) => a + b, 0) === 2020;
 
@@ -35,7 +29,7 @@ const find3EntriesThatSumTo2020 = (numbers) => {
 const multiplyEntries = (numbers) => numbers.reduce((a, b) => a * b, 1);
 
 const start = () => {
-  const input = loadInput();
+  const input = loadInput('day1/input').map((n) => parseInt(n, 10));
   const entries2 = find2EntriesThatSumTo2020(input);
   console.log(multiplyEntries(entries2));
 
