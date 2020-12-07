@@ -21,14 +21,13 @@ const parseBagRules = (rules) =>
 
 const isColorIncluded = (color, contentList) => !!contentList.find((c) => c.color === color);
 
-const findContainersOf = (bagColor, bagRules, result = []) => {
-  return Object.keys(bagRules).reduce((acc, bagRuleColor) => {
+const findContainersOf = (bagColor, bagRules, result = []) =>
+  Object.keys(bagRules).reduce((acc, bagRuleColor) => {
     if (!acc.includes(bagRuleColor) && isColorIncluded(bagColor, bagRules[bagRuleColor])) {
       return findContainersOf(bagRuleColor, bagRules, [...acc, bagRuleColor]);
     }
     return acc;
   }, result);
-};
 
 const findIndividualBagsCountInside = (bagColor, bagRules) => {
   if (bagRules[bagColor].length === 0) return 0;
