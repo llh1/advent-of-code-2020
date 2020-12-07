@@ -12,7 +12,7 @@ const parseBagRuleContent = (content) => {
 
 const parseBagRules = (rules) =>
   rules.reduce((acc, rule) => {
-    const [, bagColor, rawBagContent] = rule.match(/^([\w\s)]+)\sbags\scontain\s(.*)\.$/);
+    const [, bagColor, rawBagContent] = rule.match(/^([\w\s]+)\sbags\scontain\s(.*)\.$/);
     return {
       ...acc,
       [bagColor]: parseBagRuleContent(rawBagContent),
