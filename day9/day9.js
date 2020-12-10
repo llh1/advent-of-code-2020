@@ -27,6 +27,7 @@ const findContiguousSetWhichSumTo = (weaknessNumber, numberList) => {
       }
     }
   }
+  return null;
 };
 
 const start = () => {
