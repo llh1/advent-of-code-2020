@@ -13,29 +13,34 @@ const adjacentSeats = [
   [1, 1],
 ];
 
-const getNumberOfAdjacentOccupiedSeats = (x, y, seatMap) => {
-  return adjacentSeats.reduce((acc, delta) => {
-    const adjacentX = x + delta[0];
-    const adjacentY = y + delta[1];
-    if (
-      adjacentX < 0 ||
-      adjacentX > seatMap.length - 1 ||
-      adjacentY < 0 ||
-      adjacentY > seatMap[0].length - 1
-    ) {
-      return acc;
-    }
-    if (seatMap[adjacentX][adjacentY] === '#') {
-      return acc + 1;
-    }
-    return acc;
-  }, 0);
-};
+// const getNumberOfAdjacentOccupiedSeats = (x, y, seatMap) => {
+//   return adjacentSeats.reduce((acc, delta) => {
+//     const adjacentX = x + delta[0];
+//     const adjacentY = y + delta[1];
+//     if (
+//       adjacentX < 0 ||
+//       adjacentX > seatMap.length - 1 ||
+//       adjacentY < 0 ||
+//       adjacentY > seatMap[0].length - 1
+//     ) {
+//       return acc;
+//     }
+//     if (seatMap[adjacentX][adjacentY] === '#') {
+//       return acc + 1;
+//     }
+//     return acc;
+//   }, 0);
+// };
 
 const isOccupiedSeatVisibleInDirection = (delta, x, y, seatMap) => {
-  const positionX = x+delta[0];
-  const positionY = y+delta[1];
-  if (positionX < 0 || positionX > seatMap.length - 1 || positionY < 0 || positionY > seatMap[0].length - 1) {
+  const positionX = x + delta[0];
+  const positionY = y + delta[1];
+  if (
+    positionX < 0 ||
+    positionX > seatMap.length - 1 ||
+    positionY < 0 ||
+    positionY > seatMap[0].length - 1
+  ) {
     return false;
   }
   if (seatMap[positionX][positionY] === 'L') return false;
