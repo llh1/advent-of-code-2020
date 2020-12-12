@@ -17,9 +17,9 @@ const processInstruction = (currentPosition, instruction) => {
     W: (v) => ({ ...currentPosition, lng: currentPosition.lng - v }),
     L: (v) => ({
       ...currentPosition,
-      direction: Math.abs(4 + currentPosition.direction - v / 90) % 4,
+      direction: (4 + currentPosition.direction - v / 90) % 4,
     }),
-    R: (v) => ({ ...currentPosition, direction: Math.abs(currentPosition.direction + v / 90) % 4 }),
+    R: (v) => ({ ...currentPosition, direction: (currentPosition.direction + v / 90) % 4 }),
     F: (v) => {
       return {
         ...currentPosition,
